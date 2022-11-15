@@ -7,15 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dicoding.tourismapp.core.R
 import com.dicoding.tourismapp.core.databinding.ItemListTourismBinding
+import com.dicoding.tourismapp.core.domain.model.Anime
 import com.dicoding.tourismapp.core.domain.model.Tourism
 import java.util.ArrayList
 
 class TourismAdapter : RecyclerView.Adapter<TourismAdapter.ListViewHolder>() {
 
-    private var listData = ArrayList<Tourism>()
-    var onItemClick: ((Tourism) -> Unit)? = null
+    private var listData = ArrayList<Anime>()
+    var onItemClick: ((Anime) -> Unit)? = null
 
-    fun setData(newListData: List<Tourism>?) {
+    fun setData(newListData: List<Anime>?) {
         if (newListData == null) return
         listData.clear()
         listData.addAll(newListData)
@@ -34,13 +35,13 @@ class TourismAdapter : RecyclerView.Adapter<TourismAdapter.ListViewHolder>() {
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemListTourismBinding.bind(itemView)
-        fun bind(data: Tourism) {
+        fun bind(data: Anime) {
             with(binding) {
                 Glide.with(itemView.context)
-                    .load(data.image)
+                    .load(data.img)
                     .into(ivItemImage)
                 tvItemTitle.text = data.name
-                tvItemSubtitle.text = data.address
+                tvItemSubtitle.text = data.id.toString()
             }
         }
 

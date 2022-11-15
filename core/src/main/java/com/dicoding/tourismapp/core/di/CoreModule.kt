@@ -21,7 +21,7 @@ val databaseModule = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            TourismDatabase::class.java, "Tourism.db"
+            TourismDatabase::class.java, "Tourism2.db"
         ).fallbackToDestructiveMigration().build()
     }
 }
@@ -36,7 +36,8 @@ val networkModule = module {
     }
     single {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://tourism-api.dicoding.dev/")
+//            .baseUrl("https://tourism-api.dicoding.dev/")
+            .baseUrl("https://anime-facts-rest-api.herokuapp.com/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(get())
             .build()

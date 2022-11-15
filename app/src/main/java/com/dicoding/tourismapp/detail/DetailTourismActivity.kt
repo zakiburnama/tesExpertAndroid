@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.dicoding.tourismapp.R
-import com.dicoding.tourismapp.core.domain.model.Tourism
+import com.dicoding.tourismapp.core.domain.model.Anime
 import com.dicoding.tourismapp.databinding.ActivityDetailTourismBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -25,23 +25,24 @@ class DetailTourismActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
-        val detailTourism = intent.getParcelableExtra<Tourism>(EXTRA_DATA)
+        val detailTourism = intent.getParcelableExtra<Anime>(EXTRA_DATA)
         showDetailTourism(detailTourism)
     }
 
-    private fun showDetailTourism(detailTourism: Tourism?) {
-        detailTourism?.let {
-            supportActionBar?.title = detailTourism.name
-            binding.content.tvDetailDescription.text = detailTourism.description
-            Glide.with(this@DetailTourismActivity)
-                .load(detailTourism.image)
+    private fun showDetailTourism(detailAnime: Anime?) {
+        detailAnime?.let {
+            supportActionBar?.title = detailAnime.name
+//            binding.content.tvDetailDescription.text = detailAnime.description
+            binding.content.tvDetailDescription.text = detailAnime.name
+            Glide.with(this)
+                .load(detailAnime.img)
                 .into(binding.ivDetailImage)
 
-            var statusFavorite = detailTourism.isFavorite
+            var statusFavorite = detailAnime.isFavorite
             setStatusFavorite(statusFavorite)
             binding.fab.setOnClickListener {
                 statusFavorite = !statusFavorite
-                detailTourismViewModel.setFavoriteTourism(detailTourism, statusFavorite)
+                detailTourismViewModel.setFavoriteTourism(detailAnime, statusFavorite)
                 setStatusFavorite(statusFavorite)
             }
         }
