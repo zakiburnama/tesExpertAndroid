@@ -21,24 +21,24 @@ class MapsActivity : AppCompatActivity() {
 
         loadKoinModules(mapsModule)
 
-        supportActionBar?.title = "Tourism Map"
+        supportActionBar?.title = "Anime Map"
 
-        getTourismData()
+        getAnimeData()
     }
 
-    private fun getTourismData() {
-        mapsViewModel.tourism.observe(this, { tourism ->
-            if (tourism != null) {
-                when (tourism) {
+    private fun getAnimeData() {
+        mapsViewModel.anime.observe(this, { anime ->
+            if (anime != null) {
+                when (anime) {
                     is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
                     is Resource.Success -> {
                         binding.progressBar.visibility = View.GONE
-                        binding.tvMaps.text = "This is map of ${tourism.data?.get(0)?.name}"
+                        binding.tvMaps.text = "This is map of ${anime.data?.get(0)?.name}"
                     }
                     is Resource.Error -> {
                         binding.progressBar.visibility = View.GONE
                         binding.tvError.visibility = View.VISIBLE
-                        binding.tvError.text = tourism.message
+                        binding.tvError.text = anime.message
                     }
                 }
             }

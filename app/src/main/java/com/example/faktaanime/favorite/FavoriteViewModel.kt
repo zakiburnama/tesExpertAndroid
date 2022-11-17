@@ -2,9 +2,9 @@ package com.example.faktaanime.favorite
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.example.faktaanime.core.domain.usecase.TourismUseCase
+import com.example.faktaanime.core.domain.usecase.AnimeUseCase
 
-class FavoriteViewModel(tourismUseCase: TourismUseCase) : ViewModel() {
-    val favoriteTourism = tourismUseCase.getFavoriteTourism().asLiveData()
+class FavoriteViewModel(animeUseCase: AnimeUseCase) : ViewModel() {
+    val favoriteAnime = animeUseCase.getFavoriteAnime().asLiveData()
 }
 

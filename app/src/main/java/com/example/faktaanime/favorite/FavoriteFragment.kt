@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.faktaanime.core.ui.TourismAdapter
+import com.example.faktaanime.core.ui.AnimeAdapter
 import com.example.faktaanime.databinding.FragmentFavoriteBinding
-import com.example.faktaanime.detail.DetailTourismActivity
+import com.example.faktaanime.detail.DetailAnimeActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class FavoriteFragment : Fragment() {
@@ -32,22 +32,22 @@ class FavoriteFragment : Fragment() {
 
         if (activity != null) {
 
-            val tourismAdapter = TourismAdapter()
-            tourismAdapter.onItemClick = { selectedData ->
-                val intent = Intent(activity, DetailTourismActivity::class.java)
-                intent.putExtra(DetailTourismActivity.EXTRA_DATA, selectedData)
+            val animeAdapter = AnimeAdapter()
+            animeAdapter.onItemClick = { selectedData ->
+                val intent = Intent(activity, DetailAnimeActivity::class.java)
+                intent.putExtra(DetailAnimeActivity.EXTRA_DATA, selectedData)
                 startActivity(intent)
             }
 
-            favoriteViewModel.favoriteTourism.observe(viewLifecycleOwner, { dataTourism ->
-                tourismAdapter.setData(dataTourism)
-                binding.viewEmpty.root.visibility = if (dataTourism.isNotEmpty()) View.GONE else View.VISIBLE
+            favoriteViewModel.favoriteAnime.observe(viewLifecycleOwner, { dataAnime ->
+                animeAdapter.setData(dataAnime)
+                binding.viewEmpty.root.visibility = if (dataAnime.isNotEmpty()) View.GONE else View.VISIBLE
             })
 
-            with(binding.rvTourism) {
+            with(binding.rvAnime) {
                 layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
-                adapter = tourismAdapter
+                adapter = animeAdapter
             }
         }
     }

@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.faktaanime.core.R
-import com.example.faktaanime.core.databinding.ItemListTourismBinding
+import com.example.faktaanime.core.databinding.ItemListAnimeBinding
 import com.example.faktaanime.core.domain.model.Anime
 import java.util.ArrayList
 
-class TourismAdapter : RecyclerView.Adapter<TourismAdapter.ListViewHolder>() {
+class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.ListViewHolder>() {
 
     private var listData = ArrayList<Anime>()
     var onItemClick: ((Anime) -> Unit)? = null
@@ -23,7 +23,7 @@ class TourismAdapter : RecyclerView.Adapter<TourismAdapter.ListViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_list_tourism, parent, false))
+        ListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_list_anime, parent, false))
 
     override fun getItemCount() = listData.size
 
@@ -33,7 +33,7 @@ class TourismAdapter : RecyclerView.Adapter<TourismAdapter.ListViewHolder>() {
     }
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val binding = ItemListTourismBinding.bind(itemView)
+        private val binding = ItemListAnimeBinding.bind(itemView)
         fun bind(data: Anime) {
             with(binding) {
                 Glide.with(itemView.context)

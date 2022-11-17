@@ -5,9 +5,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-//class AnimeEntity {
-//}
-
 @Entity(tableName = "anime")
 data class AnimeEntity(
     @PrimaryKey

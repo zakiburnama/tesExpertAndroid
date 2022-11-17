@@ -2,9 +2,6 @@ package com.example.faktaanime.core.data.source.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-//class AnimeResponse {
-//}
-
 data class AnimeResponse(
     @field:SerializedName("anime_id")
     val anime_id: Int,

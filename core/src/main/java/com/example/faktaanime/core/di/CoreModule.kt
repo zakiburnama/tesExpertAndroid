@@ -1,12 +1,12 @@
 package com.example.faktaanime.core.di
 
 import androidx.room.Room
-import com.example.faktaanime.core.data.TourismRepository
+import com.example.faktaanime.core.data.AnimeRepository
 import com.example.faktaanime.core.data.source.local.LocalDataSource
-import com.example.faktaanime.core.data.source.local.room.TourismDatabase
+import com.example.faktaanime.core.data.source.local.room.AnimeDatabase
 import com.example.faktaanime.core.data.source.remote.RemoteDataSource
 import com.example.faktaanime.core.data.source.remote.network.ApiService
-import com.example.faktaanime.core.domain.repository.ITourismRepository
+import com.example.faktaanime.core.domain.repository.IAnimeRepository
 import com.example.faktaanime.core.utils.AppExecutors
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -17,11 +17,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 val databaseModule = module {
-    factory { get<TourismDatabase>().tourismDao() }
+    factory { get<AnimeDatabase>().animeDao() }
     single {
         Room.databaseBuilder(
             androidContext(),
-            TourismDatabase::class.java, "Tourism2.db"
+            AnimeDatabase::class.java, "Anime.db"
         ).fallbackToDestructiveMigration().build()
     }
 }
@@ -36,7 +36,6 @@ val networkModule = module {
     }
     single {
         val retrofit = Retrofit.Builder()
-//            .baseUrl("https://tourism-api.dicoding.dev/")
             .baseUrl("https://anime-facts-rest-api.herokuapp.com/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(get())
@@ -49,8 +48,8 @@ val repositoryModule = module {
     single { LocalDataSource(get()) }
     single { RemoteDataSource(get()) }
     factory { AppExecutors() }
-    single<ITourismRepository> {
-        TourismRepository(
+    single<IAnimeRepository> {
+        AnimeRepository(
             get(),
             get(),
             get()

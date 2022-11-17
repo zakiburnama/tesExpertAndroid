@@ -24,7 +24,7 @@
         </activity>
 
         <activity
-            android:name="com.example.faktaanime.detail.DetailTourismActivity"
+            android:name="com.example.faktaanime.detail.DetailAnimeActivity"
             android:label="@string/title_activity_detail_home"
             android:theme="@style/Theme.FaktaAnime.NoActionBar" />
     </application>

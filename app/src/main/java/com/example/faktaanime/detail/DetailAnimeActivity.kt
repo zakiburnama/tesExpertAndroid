@@ -6,30 +6,26 @@ import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.faktaanime.R
 import com.example.faktaanime.core.domain.model.Anime
-import com.example.faktaanime.databinding.ActivityDetailTourismBinding
+import com.example.faktaanime.databinding.ActivityDetailAnimeBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class DetailTourismActivity : AppCompatActivity() {
+class DetailAnimeActivity : AppCompatActivity() {
 
-    companion object {
-        const val EXTRA_DATA = "extra_data"
-    }
-
-    private val detailTourismViewModel: DetailTourismViewModel by viewModel()
-    private lateinit var binding: ActivityDetailTourismBinding
+    private val detailAnimeViewModel: DetailAnimeViewModel by viewModel()
+    private lateinit var binding: ActivityDetailAnimeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDetailTourismBinding.inflate(layoutInflater)
+        binding = ActivityDetailAnimeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
 
-        val detailTourism = intent.getParcelableExtra<Anime>(EXTRA_DATA)
-        showDetailTourism(detailTourism)
+        val detailAnime = intent.getParcelableExtra<Anime>(EXTRA_DATA)
+        showDetailAnime(detailAnime)
     }
 
-    private fun showDetailTourism(detailAnime: Anime?) {
+    private fun showDetailAnime(detailAnime: Anime?) {
         detailAnime?.let {
             supportActionBar?.title = detailAnime.name
 //            binding.content.tvDetailDescription.text = detailAnime.description
@@ -42,7 +38,7 @@ class DetailTourismActivity : AppCompatActivity() {
             setStatusFavorite(statusFavorite)
             binding.fab.setOnClickListener {
                 statusFavorite = !statusFavorite
-                detailTourismViewModel.setFavoriteTourism(detailAnime, statusFavorite)
+                detailAnimeViewModel.setFavoriteAnime(detailAnime, statusFavorite)
                 setStatusFavorite(statusFavorite)
             }
         }
@@ -54,5 +50,9 @@ class DetailTourismActivity : AppCompatActivity() {
         } else {
             binding.fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_not_favorite_white))
         }
+    }
+
+    companion object {
+        const val EXTRA_DATA = "extra_data"
     }
 }

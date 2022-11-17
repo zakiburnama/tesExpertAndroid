@@ -5,17 +5,17 @@ import com.example.faktaanime.core.data.source.local.entity.AnimeEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface TourismDao {
+interface AnimeDao {
 
     @Query("SELECT * FROM anime")
-    fun getAllTourism(): Flow<List<AnimeEntity>>
+    fun getAllAnime(): Flow<List<AnimeEntity>>
 
     @Query("SELECT * FROM anime where isFavorite = 1")
-    fun getFavoriteTourism(): Flow<List<AnimeEntity>>
+    fun getFavoriteAnime(): Flow<List<AnimeEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTourism(tourism: List<AnimeEntity>)
+    suspend fun insertAnime(anime: List<AnimeEntity>)
 
     @Update
-    fun updateFavoriteTourism(anime: AnimeEntity)
+    fun updateFavoriteAnime(anime: AnimeEntity)
 }

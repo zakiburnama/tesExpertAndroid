@@ -10,28 +10,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class RemoteDataSource(private val apiService: ApiService) {
-
-//    suspend fun getAllTourism(): Flow<ApiResponse<List<TourismResponse>>> {
-//        //get data from remote api
-//        return flow {
-//            try {
-//                val response = apiService.getList()
-//                val dataArray = response.places
-//                if (dataArray.isNotEmpty()){
-//                    emit(ApiResponse.Success(response.places))
-//                } else {
-//                    emit(ApiResponse.Empty)
-//                }
-//            } catch (e : Exception){
-//                emit(ApiResponse.Error(e.toString()))
-//                Log.e("RemoteDataSource", e.toString())
-//            }
-//        }.flowOn(Dispatchers.IO)
-//    }
-
-
-    suspend fun getAllTourism(): Flow<ApiResponse<List<AnimeResponse>>> {
-        //get data from remote api
+    suspend fun getAllAnime(): Flow<ApiResponse<List<AnimeResponse>>> {
         return flow {
             try {
                 val response = apiService.getList()
@@ -47,6 +26,4 @@ class RemoteDataSource(private val apiService: ApiService) {
             }
         }.flowOn(Dispatchers.IO)
     }
-
 }
-
