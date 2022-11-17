@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
-    package="com.dicoding.tourismapp.maps">
+    package="com.example.faktaanime.maps">
 
     <dist:module
         dist:instant="false"
@@ -14,11 +14,11 @@
     </dist:module>
 
     <application>
-        <activity android:name=".MapsActivity">
+        <activity android:name="com.example.faktaanime.maps.MapsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="tourismapp"
+                <data android:scheme="faktaanime"
                     android:host="maps"/>
             </intent-filter>
         </activity>
