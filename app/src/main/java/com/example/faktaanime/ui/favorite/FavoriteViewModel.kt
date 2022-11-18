@@ -1,4 +1,4 @@
-package com.example.faktaanime.favorite
+package com.example.faktaanime.ui.favorite
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

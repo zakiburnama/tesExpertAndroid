@@ -1,4 +1,4 @@
-package com.example.faktaanime.detail
+package com.example.faktaanime.ui.detail
 
 import androidx.lifecycle.ViewModel
 import com.example.faktaanime.core.domain.model.Anime

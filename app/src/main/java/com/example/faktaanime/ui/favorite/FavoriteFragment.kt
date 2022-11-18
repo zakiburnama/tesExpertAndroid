@@ -1,4 +1,4 @@
-package com.example.faktaanime.home
+package com.example.faktaanime.ui.favorite
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,25 +7,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.faktaanime.R
-import com.example.faktaanime.core.data.Resource
 import com.example.faktaanime.core.ui.AnimeAdapter
-import com.example.faktaanime.databinding.FragmentHomeBinding
-import com.example.faktaanime.detail.DetailAnimeActivity
+import com.example.faktaanime.databinding.FragmentFavoriteBinding
+import com.example.faktaanime.ui.detail.DetailAnimeActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class HomeFragment : Fragment() {
+class FavoriteFragment : Fragment() {
 
-    private val homeViewModel: HomeViewModel by viewModel()
+    private val favoriteViewModel: FavoriteViewModel by viewModel()
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -41,21 +39,9 @@ class HomeFragment : Fragment() {
                 startActivity(intent)
             }
 
-            homeViewModel.anime.observe(viewLifecycleOwner, { anime ->
-                if (anime != null) {
-                    when (anime) {
-                        is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
-                        is Resource.Success -> {
-                            binding.progressBar.visibility = View.GONE
-                            animeAdapter.setData(anime.data)
-                        }
-                        is Resource.Error -> {
-                            binding.progressBar.visibility = View.GONE
-                            binding.viewError.root.visibility = View.VISIBLE
-                            binding.viewError.tvError.text = anime.message ?: getString(R.string.something_wrong)
-                        }
-                    }
-                }
+            favoriteViewModel.favoriteAnime.observe(viewLifecycleOwner, { dataAnime ->
+                animeAdapter.setData(dataAnime)
+                binding.viewEmpty.root.visibility = if (dataAnime.isNotEmpty()) View.GONE else View.VISIBLE
             })
 
             with(binding.rvAnime) {

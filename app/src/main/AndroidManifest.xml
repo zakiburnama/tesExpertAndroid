@@ -12,16 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FaktaAnime">
-<!--        <activity-->
-<!--            android:name=".MainActivity2"-->
-<!--            android:exported="false"-->
-<!--            android:label="@string/title_activity_main2">-->
-<!--            <meta-data-->
-<!--                android:name="android.app.lib_name"-->
-<!--                android:value="" />-->
-<!--        </activity>-->
         <activity
-            android:name=".MainActivity2"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".detail.DetailAnimeActivity"
+            android:name=".ui.detail.DetailAnimeActivity"
             android:label="@string/title_activity_detail_home"
             android:theme="@style/Theme.FaktaAnime.NoActionBar" />
     </application>

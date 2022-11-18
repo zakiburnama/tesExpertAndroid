@@ -2,9 +2,9 @@ package com.example.faktaanime.di
 
 import com.example.faktaanime.core.domain.usecase.AnimeInteractor
 import com.example.faktaanime.core.domain.usecase.AnimeUseCase
-import com.example.faktaanime.detail.DetailAnimeViewModel
-import com.example.faktaanime.favorite.FavoriteViewModel
-import com.example.faktaanime.home.HomeViewModel
+import com.example.faktaanime.ui.detail.DetailAnimeViewModel
+import com.example.faktaanime.ui.favorite.FavoriteViewModel
+import com.example.faktaanime.ui.home.HomeViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
