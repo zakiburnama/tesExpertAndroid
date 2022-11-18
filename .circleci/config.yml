@@ -18,7 +18,7 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
       - store_test_results:
-          path: test-results
+          path: app/build/test-results
 
 
 # Invoke jobs via workflows
