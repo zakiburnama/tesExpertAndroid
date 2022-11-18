@@ -1,6 +1,6 @@
-package com.example.faktaanime.maps.di
+package com.example.faktaanime.news.di
 
-import com.example.faktaanime.maps.NewsViewModel
+import com.example.faktaanime.news.NewsViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

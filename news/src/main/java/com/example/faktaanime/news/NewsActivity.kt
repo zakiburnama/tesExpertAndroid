@@ -1,11 +1,11 @@
-package com.example.faktaanime.maps
+package com.example.faktaanime.news
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.faktaanime.core.data.Resource
-import com.example.faktaanime.maps.databinding.ActivityNewsBinding
-import com.example.faktaanime.maps.di.newsModule
+import com.example.faktaanime.news.databinding.ActivityNewsBinding
+import com.example.faktaanime.news.di.newsModule
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 

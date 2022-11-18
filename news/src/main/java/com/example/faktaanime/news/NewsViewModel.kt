@@ -1,4 +1,4 @@
-package com.example.faktaanime.maps
+package com.example.faktaanime.news
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
