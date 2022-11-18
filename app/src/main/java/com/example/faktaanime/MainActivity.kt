@@ -61,6 +61,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //                Toast.makeText(this, "Coming soon", Toast.LENGTH_SHORT).show()
                 val uri = Uri.parse("faktaanime://maps")
                 startActivity(Intent(Intent.ACTION_VIEW, uri))
+//                val intent = Intent(this@MainActivity, MainActivity2::class.java)
+//                startActivity(intent)
             }
         }
         if (fragment != null) {

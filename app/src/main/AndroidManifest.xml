@@ -5,26 +5,32 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.example.faktaanime.MyApplication"
+        android:name=".MyApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FaktaAnime">
-
+<!--        <activity-->
+<!--            android:name=".MainActivity2"-->
+<!--            android:exported="false"-->
+<!--            android:label="@string/title_activity_main2">-->
+<!--            <meta-data-->
+<!--                android:name="android.app.lib_name"-->
+<!--                android:value="" />-->
+<!--        </activity>-->
         <activity
-            android:name="com.example.faktaanime.MainActivity"
-            android:theme="@style/Theme.FaktaAnime.NoActionBar">
+            android:name=".MainActivity2"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.example.faktaanime.detail.DetailAnimeActivity"
+            android:name=".detail.DetailAnimeActivity"
             android:label="@string/title_activity_detail_home"
             android:theme="@style/Theme.FaktaAnime.NoActionBar" />
     </application>
