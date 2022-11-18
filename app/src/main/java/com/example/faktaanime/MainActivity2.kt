@@ -45,7 +45,7 @@ class MainActivity2 : AppCompatActivity() {
         return when (item.itemId) {
             R.id.menu1 -> {
 //                Toast.makeText(this, "Ini adalah btn search", Toast.LENGTH_SHORT).show()
-                val uri = Uri.parse("faktaanime://maps")
+                val uri = Uri.parse("faktaanime://news")
                 startActivity(Intent(Intent.ACTION_VIEW, uri))
                 true
             }

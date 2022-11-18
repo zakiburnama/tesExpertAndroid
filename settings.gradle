@@ -1,4 +1,4 @@
-include ':maps'
+include ':news'
 include ':core'
 rootProject.name='Fakta Anime'
 include ':app'
