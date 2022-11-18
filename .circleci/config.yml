@@ -18,7 +18,12 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
       - store_test_results:
-          path: app/build/test-results
+          path: app/build/test-results   
+      - store_artifacts:
+          path: /tmp/art-1
+          destination: artifact-file
+      - store_artifacts:
+          path: /tmp/artifacts
 
 
 # Invoke jobs via workflows
