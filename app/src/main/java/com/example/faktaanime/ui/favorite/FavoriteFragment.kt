@@ -39,10 +39,11 @@ class FavoriteFragment : Fragment() {
                 startActivity(intent)
             }
 
-            favoriteViewModel.favoriteAnime.observe(viewLifecycleOwner, { dataAnime ->
+            favoriteViewModel.favoriteAnime.observe(viewLifecycleOwner) { dataAnime ->
                 animeAdapter.setData(dataAnime)
-                binding.viewEmpty.root.visibility = if (dataAnime.isNotEmpty()) View.GONE else View.VISIBLE
-            })
+                binding.viewEmpty.root.visibility =
+                    if (dataAnime.isNotEmpty()) View.GONE else View.VISIBLE
+            }
 
             with(binding.rvAnime) {
                 layoutManager = LinearLayoutManager(context)

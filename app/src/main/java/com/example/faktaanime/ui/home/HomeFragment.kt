@@ -41,7 +41,7 @@ class HomeFragment : Fragment() {
                 startActivity(intent)
             }
 
-            homeViewModel.anime.observe(viewLifecycleOwner, { anime ->
+            homeViewModel.anime.observe(viewLifecycleOwner) { anime ->
                 if (anime != null) {
                     when (anime) {
                         is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
@@ -52,11 +52,12 @@ class HomeFragment : Fragment() {
                         is Resource.Error -> {
                             binding.progressBar.visibility = View.GONE
                             binding.viewError.root.visibility = View.VISIBLE
-                            binding.viewError.tvError.text = anime.message ?: getString(R.string.something_wrong)
+                            binding.viewError.tvError.text =
+                                anime.message ?: getString(R.string.something_wrong)
                         }
                     }
                 }
-            })
+            }
 
             with(binding.rvAnime) {
                 layoutManager = LinearLayoutManager(context)

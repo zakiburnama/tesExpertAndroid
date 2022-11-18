@@ -1,6 +1,7 @@
 package com.example.faktaanime.core.di
 
 import androidx.room.Room
+import com.example.faktaanime.core.BuildConfig
 import com.example.faktaanime.core.data.AnimeRepository
 import com.example.faktaanime.core.data.source.local.LocalDataSource
 import com.example.faktaanime.core.data.source.local.room.AnimeDatabase
@@ -27,16 +28,22 @@ val databaseModule = module {
 }
 
 val networkModule = module {
+    val loggingInterceptor =
+        if (BuildConfig.DEBUG)
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        else
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
+
     single {
         OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .addInterceptor(loggingInterceptor)
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
             .build()
     }
     single {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://anime-facts-rest-api.herokuapp.com/api/")
+            .baseUrl(BuildConfig.API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(get())
             .build()

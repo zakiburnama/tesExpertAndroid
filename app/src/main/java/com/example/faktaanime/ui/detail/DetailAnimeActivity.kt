@@ -28,7 +28,6 @@ class DetailAnimeActivity : AppCompatActivity() {
     private fun showDetailAnime(detailAnime: Anime?) {
         detailAnime?.let {
             supportActionBar?.title = detailAnime.name
-//            binding.content.tvDetailDescription.text = detailAnime.description
             binding.content.tvDetailDescription.text = detailAnime.name
             Glide.with(this)
                 .load(detailAnime.img)
