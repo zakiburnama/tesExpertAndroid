@@ -57,8 +57,9 @@ val networkModule = module {
             .build()
     }
     single {
+        val API_URL = "https://anime-facts-rest-api.herokuapp.com/api/"
         val retrofit = Retrofit.Builder()
-            .baseUrl(BuildConfig.API_URL)
+            .baseUrl(API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(get())
             .build()
