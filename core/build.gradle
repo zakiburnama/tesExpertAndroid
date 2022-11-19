@@ -22,10 +22,12 @@ android {
 
     buildTypes {
         debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "API_URL", "\"https://anime-facts-rest-api.herokuapp.com/api/\""
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -33,6 +35,8 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    sourceSets { main { jniLibs.srcDirs = ['libs'] } }
 }
 
 dependencies {
@@ -51,4 +55,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
     implementation "androidx.room:room-ktx:$room_version"
     api "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+
+    implementation "net.zetetic:android-database-sqlcipher:4.4.0"
+    implementation "androidx.sqlite:sqlite-ktx:2.1.0"
 }
