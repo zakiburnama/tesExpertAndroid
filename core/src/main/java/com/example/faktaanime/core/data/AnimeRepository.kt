@@ -25,7 +25,8 @@ class AnimeRepository(
                 }
             }
 
-            override fun shouldFetch(data: List<Anime>?): Boolean = true
+            override fun shouldFetch(data: List<Anime>?): Boolean =
+                data == null || data.isEmpty()
 
             override suspend fun createCall(): Flow<ApiResponse<List<AnimeResponse>>> =
                 remoteDataSource.getAllAnime()
