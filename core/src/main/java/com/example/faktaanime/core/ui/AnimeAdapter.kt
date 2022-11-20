@@ -1,5 +1,6 @@
 package com.example.faktaanime.core.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.ListViewHolder>() {
     private var listData = ArrayList<Anime>()
     var onItemClick: ((Anime) -> Unit)? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(newListData: List<Anime>?) {
         if (newListData == null) return
         listData.clear()
